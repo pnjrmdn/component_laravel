@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function register()
     {
@@ -15,12 +15,11 @@ class UsersController extends Controller
         return view('auth/register', $data);
     }
 
-
     public function register_action(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:tb_user',
+            'name' => 'required|unique:users',
+            'username' => 'required|unique:users',
             'password' => 'required',
             'password_confirm' => 'required|same:password',
         ]);
